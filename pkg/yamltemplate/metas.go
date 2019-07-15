@@ -61,6 +61,13 @@ func NewMetas(node yamlmeta.Node, opts MetasOpts) (Metas, error) {
 
 				if node.GetPosition().IsKnown() {
 					if meta.Position.Line() == node.GetPosition().Line() {
+						// return error when there is both inilne code for node with children
+						if len(node.GetValues()) > 0 && node.GetValues()[0] != nil {
+							return metas, fmt.Errorf(
+								"Ambiguous code and value assignment at %s for node with children",
+								meta.Position.AsString())
+						}
+
 						ann.Name = template.AnnotationValue
 					}
 				}

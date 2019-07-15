@@ -1,0 +1,6 @@
+--- #@ { "first": "is included"}
+this line: is ignored too
+
++++
+
+ERR: Ambiguous code and value assignment at line stdin:1 for node with children
