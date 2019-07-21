@@ -33,6 +33,17 @@ type RegularFilesSource struct {
 	ui   cmdcore.PlainUI
 }
 
+func NewRegularFilesSourceExpanded(files []string, fileMarks []string, recursive bool, output string, outputType string, ui cmdcore.PlainUI) *RegularFilesSource {
+	opts := RegularFilesSourceOpts{
+		files:      files,
+		fileMarks:  fileMarks,
+		recursive:  recursive,
+		output:     output,
+		outputType: outputType,
+	}
+	return &RegularFilesSource{opts, ui}
+}
+
 func NewRegularFilesSource(opts RegularFilesSourceOpts, ui cmdcore.PlainUI) *RegularFilesSource {
 	return &RegularFilesSource{opts, ui}
 }
